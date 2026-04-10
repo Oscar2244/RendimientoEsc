@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Calificaciones Académicas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="edu-header no-print">
+        <div class="header-content">
+            <div class="edu-badge">Escuela El Pollo Feliz</div>
+            <h1>Gestión de Rendimiento Escolar</h1>
+        </div>
+    </header>
+
+    <main class="edu-container">
+        <section class="edu-card no-print">
+            <h3>Carga de Calificaciones</h3>
+            <form id="form-alumnos" class="edu-form">
+                <input type="text" id="reg-nombre" placeholder="Nombre completo del estudiante" required>
+                <div class="input-row">
+                    <input type="number" id="reg-nota" placeholder="Nota (1-5)" min="1" max="5" step="0.1" required>
+                    <button type="submit" class="btn-edu-save">Registrar Estudiante</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="dashboard-academico" class="print-area">
+            <div class="report-meta">
+                <h2>Reporte General de Aprovechamiento</h2>
+                <p>Escala de Evaluación: 1.0 - 5.0</p>
+            </div>
+
+            <div class="edu-stats">
+                <div class="stat-item">
+                    <span class="label">Promedio Grupal</span>
+                    <div class="value" id="val-promedio">0.0</div>
+                </div>
+                <div class="stat-item highlight">
+                    <span class="label">Rendimiento Máximo</span>
+                    <div class="value" id="val-mejor">---</div>
+                </div>
+                <div class="stat-item alert">
+                    <span class="label">Rendimiento Mínimo</span>
+                    <div class="value" id="val-peor">---</div>
+                </div>
+            </div>
+
+            <div class="edu-card chart-card">
+                <h3>Análisis Visual de Calificaciones</h3>
+                <div class="chart-scroll-wrapper">
+                    <div class="chart-container" id="grafico-barras"></div>
+                </div>
+            </div>
+
+            <div class="edu-card table-card">
+                <h3>Listado de Estudiantes</h3>
+                <div class="table-responsive">
+                    <table class="edu-table">
+                        <thead>
+                            <tr>
+                                <th>Estudiante</th>
+                                <th class="text-center">Calificación</th>
+                                <th class="no-print">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="db-lista-alumnos"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="edu-footer no-print">
+            <button onclick="imprimirDashboard()" class="btn-edu-print">Generar PDF Académico</button>
+            <button onclick="nuevaSesion()" class="btn-edu-reset">Limpiar Registro</button>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
